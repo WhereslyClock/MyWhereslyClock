@@ -141,7 +141,6 @@ are not 100% the same as listed here, the usb connector Im guessing at the pinou
 These designs have ***NOT BEEN TESTED***, but they are close to what I have, instead of a USB sockeet I have a 12v step down voltage regulater as desribed above.
 I am not experienced with Fritzing so am still learning, at this time, these diagrams are to give you an IDEA of what the circuit is, you should verify and validate every connection and wire yourself right now.
 
-![Draft Fritzing CircuitBoard Design](markup/frtizingCircuit..png)
 ![Draft Fritzing BreadBoard Design](markup/fritzBB.png)
 
 # Loading Software
