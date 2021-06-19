@@ -345,3 +345,85 @@ circuit boards in two with an ic2/power connector between, not sure yet.
 I am no electrician and at this stage of the project am a little scared to leave it running 
 unless you are an electrician I advise you to do the same, dont leave it unattended unless you know you built it with reliable safe components and you are confident it would pass safety tests.
 Again I take no responsibility for what you do or what happens if you build this.  
+
+## Apendices
+### Resources referred to during build
+Arduino Nano | 3D CAD Model Library | GrabCAD
+https://grabcad.com/library/arduino-nano--1
+
+ULN2003 Unipolar Stepper Driver Board | 3D CAD Model Library | GrabCAD
+https://grabcad.com/library/uln2003-unipolar-stepper-driver-board-1
+
+simultaneous stepper motor control using accelstepper - Using Arduino / Motors, Mechanics, Power and CNC - Arduino Forum
+https://forum.arduino.cc/t/simultaneous-stepper-motor-control-using-accelstepper/625179/14
+
+Running both 5v and 3.3v devices on I2C | RobotShop Community
+https://www.robotshop.com/community/blog/show/running-both-5v-and-3-3v-devices-on-i2c
+
+Master Writer/Slave Receiver | Arduino
+https://www.arduino.cc/en/Tutorial/LibraryExamples/MasterWriter
+
+HTTPS requests to any URL using the ESP8266 - Maakbaas
+https://maakbaas.com/esp8266-iot-framework/logs/https-requests/
+
+tzapu/WiFiManager: ESP8266 WiFi Connection manager with web captive portal
+https://github.com/tzapu/WiFiManager
+
+hometinker12/ESP8266MQTTSSL: Example using the pubsubclient with WiFiClientSecure
+https://github.com/hometinker12/ESP8266MQTTSSL
+
+WifiClientSecure, PubSubClient and WifiManager dont work together · Issue #698 · tzapu/WiFiManager
+https://github.com/tzapu/WiFiManager/issues/698
+
+Arduino PubSubClient - MQTT Client Library Encyclopedia
+https://www.hivemq.com/blog/mqtt-client-library-encyclopedia-arduino-pubsubclient/
+
+HiveMQ Cloud
+https://console.hivemq.cloud/
+
+HiveMQ Cloud - Free Fully Managed MQTT Platform
+https://www.hivemq.com/mqtt-cloud-broker/
+
+The Movement - The Magic Clock
+http://www.themagicclock.com/build-log/movintroduction-to-arduino-pro-mini-2.png (874×522)
+https://www.theengineeringprojects.com/wp-content/uploads/2018/06/introduction-to-arduino-pro-mini-2.png
+
+technical stuff, hopefully useful to some: Programming a standalone ESP 8266-12 using Arduino IDE and a FT232RL FTDI USB to TTL Serial Adapter
+http://technicalstuffhopefullyuseful.blogspot.com/2016/11/programming-standalone-esp-8266-12.html
+
+ement
+
+Weasley Clock - printablepropss Webseite!
+https://printableprops.jimdofree.com/en/harry-potter/weasley-clock/
+
+K&S Brass Telescopic Tubing Assortments
+£14.99 - 5/5 stars
+https://www.etsy.com/uk/listing/735240006/ks-brass-telescopic-tubing-assortments?gpla=1&gao=1&&utm_source=google&utm_medium=cpc&utm_campaign=shopping_uk_en_gb_a-craft_supplies_and_tools-other&utm_custom1=_k_CjwKCAjwx6WDBhBQEiwA_dP8rVwSckBTIwWJQDCbRv1O2SVBy3879ruQ-wC7PSgB43yQHI1XIfMyYxoCSFoQAvD_BwE_k_&utm_content=go_325938528_20231667888_88477464288_pla-106551294035_c__735240006engb_142096120&utm_custom2=325938528&gclid=CjwKCAjwx6WDBhBQEiwA_dP8rVwSckBTIwWJQDCbRv1O2SVBy3879ruQ-wC7PSgB43yQHI1XIfMyYxoCSFoQAvD_BwE
+
+HS Walsh | Jewellery Making Supplies, Clock & Watchmakers Tools
+https://www.hswalsh.com/
+
+What it does - OwnTracks Booklet
+https://owntracks.org/booklet/guide/whathow/
+
+randomstring/WeasleyClock: Project to build my own working Weasley Clock to track the location of family members.
+https://github.com/randomstring/WeasleyClock
+
+Arduino/BearSSL_CertStore.ino at master · esp8266/Arduino
+https://github.com/esp8266/Arduino/blob/master/libraries/ESP8266WiFi/examples/BearSSL_CertStore/BearSSL_CertStore.ino
+
+MQTT Connection with BearSSL and TLS 1.2 results in exception 28 · Issue #6232 · esp8266/Arduino
+https://github.com/esp8266/Arduino/issues/6232
+
+nickgammon/I2C_Anything: Arduino library to simplify reading/writing to I2C
+https://github.com/nickgammon/I2C_Anything
+
+C++ Shell
+http://cpp.sh/
+
+introduction-to-arduino-pro-mini-2.png (874×522)
+https://www.theengineeringprojects.com/wp-content/uploads/2018/06/introduction-to-arduino-pro-mini-2.png
+
+technical stuff, hopefully useful to some: Programming a standalone ESP 8266-12 using Arduino IDE and a FT232RL FTDI USB to TTL Serial Adapter
+http://technicalstuffhopefullyuseful.blogspot.com/2016/11/programming-standalone-esp-8266-12.html
+
