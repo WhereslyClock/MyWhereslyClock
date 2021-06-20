@@ -1,6 +1,7 @@
 # Where'sLy Clock Project
 ## Intro
-![Animated GIf of Weasley Clock](markup/FilmClock.gif)  
+![Animated GIf of Weasley Clock](markup/FilmClock.gif)  ![Wheresly Clock](markup/InOperationVideo.GIF)  
+
 This project contains all the work I have done so far on creating a working GPS driven clock that emulates the Magical Clock from the Harry Potter films.  
 
 I spent months on this and you are free to download the project, its on an MIT open source licence.  If you liked it and it works for you, 
@@ -323,7 +324,13 @@ Lastly to configure the lost button the event is "enter" and the "desc" is "lost
 Repeat adding buttons one for each location and the two special locations.
 
 To add other people Copy and paste all the buttons,  but you need to change the Topic for publishing
-and change the /1/  to /2/ or /3/ and /4/  for each person.
+and change the /1/  to /2/ or /3/ and /4/  for each person.  
+
+In this demo video, you can see me using the app to do this testing about half way through.
+
+<video controls width="300">
+   <source  src="markup/InOperationVideo.mp4">
+</video>  
 
 ## Build a box / Print the Face / Stick it together 
 Ok so if you got this far you can build a box for this, I will add some more pictures of mine later.
@@ -345,6 +352,21 @@ circuit boards in two with an ic2/power connector between, not sure yet.
 I am no electrician and at this stage of the project am a little scared to leave it running 
 unless you are an electrician I advise you to do the same, dont leave it unattended unless you know you built it with reliable safe components and you are confident it would pass safety tests.
 Again I take no responsibility for what you do or what happens if you build this.  
+
+## Pictures from the Build
+These are some of the vids pictures from the build.
+
+![Board Build](markup/breadBoardBuild.jpg)
+![GoogleMaps image](markup/theBoardBuild.jpg)
+
+This shows me working on the electronics at quite an established stage of coding, I did a lot of
+this work sat in a chair, proving it's possible to do things without a workshop, but it would have
+been much easier with one.
+
+<video controls width="300">
+   <source  src="markup/earlyBuild.mp4">
+</video>  
+
 
 ## Apendices
 ### Resources referred to during build
