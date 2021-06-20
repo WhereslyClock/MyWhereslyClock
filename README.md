@@ -328,9 +328,8 @@ and change the /1/  to /2/ or /3/ and /4/  for each person.
 
 In this demo video, you can see me using the app to do this testing about half way through.
 
-<video controls width="300">
-   <source  src="markup/InOperationVideo.mp4">
-</video>  
+<a href="https://youtu.be/s3MRNlUg-BU">Click for the demo video</a>
+
 
 ## Build a box / Print the Face / Stick it together 
 Ok so if you got this far you can build a box for this, I will add some more pictures of mine later.
@@ -363,9 +362,7 @@ This shows me working on the electronics at quite an established stage of coding
 this work sat in a chair, proving it's possible to do things without a workshop, but it would have
 been much easier with one.
 
-<video controls width="300">
-   <source  src="markup/earlyBuild.mp4">
-</video>  
+<a href="https://www.youtube.com/watch?v=Jwz-Kaer89c">Click to Watch Early Build Video</a>
 
 
 ## Apendices
