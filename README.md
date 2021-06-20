@@ -296,7 +296,7 @@ I then send signals using the test software, to all the hands to go home, and gi
 So you will need to test this clock and rather than driving all over the place, you can just replicate some of the messages that would be sent by OwnTracks, using Apps on your phone.   I was using an App called
 [MQTT DashBoard](https://play.google.com/store/apps/details?id=com.lapetov.mqtt&hl=en_GB&gl=US) on Android.
 
-<table><tr><td><img src="markup/mqttdash1.jpg"></td><td><img src="markup/mqttdash2.jpg"></td></tr></table>
+<table><tr><td><img src="markup/mqttdash1.jpg"></td><td><img src="markup/MqttDash2.jpg"></td></tr></table>
 
 You can create you own version of this,  it's a little laborious, but has proved invaluable.
 Start by creating a dashboard, register the MQTT server and user/pass details.  
