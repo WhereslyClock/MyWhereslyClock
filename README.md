@@ -4,12 +4,10 @@
 
 This project contains all the work I have done so far on creating a working GPS driven clock that emulates the Magical Clock from the Harry Potter films.  
 
-I spent months on this and you are free to download the project, its on an MIT open source licence.  If you liked it and it works for you, 
-**consider buying me a coffee**, it's not compulsary, just be nice.  
+I spent months on this and you are free to download the project, its on an MIT open source licence.  
 If you have trouble drop an incident.
 If you feel you could contribute to the project, let me know, I have no idea how to organise that, yet, but taking suggestions.  
 
-[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/K3K14XOIU)
 
 ## Careful now
 ![Fr.Ted - CarefulNow](markup/careful.jpg)  
