@@ -1,4 +1,8 @@
 # Where'sLy Clock Project
+##Who Am I ?
+You can find me on twitter as @binaryjam, I'm Simon. If you came here from another website, using my photos and watermarking them as there own, well they had nothing to do with this build, this site, nothing.
+Thanks for the link but your attribution sucks fella.   (Hence this intro).
+
 ## Intro
 ![Animated GIf of Weasley Clock](markup/FilmClock.gif)  ![Wheresly Clock](markup/InOperationVideo.GIF)  
 
