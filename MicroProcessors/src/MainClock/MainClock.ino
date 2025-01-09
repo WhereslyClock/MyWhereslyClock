@@ -16,22 +16,32 @@ const int perPersonStep = 115; // Allows for a person offset so not all at exact
 const int stepFiller = 26; //Another filler, buggered if I can remember what for, see how handy comments are, you can have fun figuring it out  
 
 WiFiManager wm; // global wm instance
-//If I dont have this useless variable then the other server variable contains blanks on saving, something is overwriting memory?
-char lmqtt_server[70];
 
-char mqtt_port[4];// = "8883";
+
+char mqtt_port[4];// = "1883";
 char mqtt_user[50];// = "";
 char mqtt_password[50];// = "";
-char* mqtt_id = "Clock";
-char* mqtt_topic = "owntracks/OwnTracks/#";
+bool mqtt_secure;
+
+char mqtt_id[20];
+const char* mqtt_topic = "owntracks/OwnTracks/#";
+const char* mqtt_topic_alive = "Wheresly";
 
 //This is a pre-determined SSL hash to check against a dynamic server, cant go live with this.
 //const char fingerprint[] PROGMEM = "";
 
 char mqtt_server[70];
 
-WiFiClientSecure wifiClient;
-PubSubClient mqttclient(wifiClient);
+Client* client; // Pointer to base class
+
+PubSubClient mqttclient;//(*client);
+
+unsigned long lastAliveMessage;
+const unsigned long aliveInterval = 10000; 
+const unsigned long messageExpireInterval = 5000; // 1 seconds
+unsigned long currentMillis; 
+unsigned long lastClearMessage = 0;
+bool aliveMessagePublished = false;
 
 bool shouldSaveConfig = false;
 
@@ -61,6 +71,8 @@ void ensureFsMounted() {
                     strcpy(mqtt_port, json["mqtt_port"]);
                     strcpy(mqtt_user, json["mqtt_user"]);
                     strcpy(mqtt_password, json["mqtt_password"]);
+                    mqtt_secure = atoi(json["mqtt_password"]);
+
 
                 } else {
                     Serial.println("failed to load json config");
@@ -237,8 +249,6 @@ void reconnect() {
     //Subscribe to topic
     mqttclient.subscribe(mqtt_topic);
 
-    Serial.println("Starting Wire");
-    Wire.begin(PIN_SDA, PIN_SCL);
   } else {
     Serial.print("failed, rc=");
     Serial.print(mqttclient.state());
@@ -252,6 +262,13 @@ void reconnect() {
 
 
 void setup() {
+  // Initialize random seed
+  randomSeed(analogRead(0));
+
+  // Generate a random number and append it to the mqtt_id
+  snprintf(mqtt_id, sizeof(mqtt_id), "Clock-%04d", random(10000));
+
+
   WiFi.mode(WIFI_STA); // explicitly set mode, esp defaults to STA+AP  
   Serial.begin(9600);
 
@@ -265,7 +282,8 @@ void setup() {
   WiFiManagerParameter custom_mqtt_port("port", "mqtt port", mqtt_port, 4);
   WiFiManagerParameter custom_mqtt_user("user", "mqtt user", mqtt_user, 50);
   WiFiManagerParameter custom_mqtt_password("password", "mqtt password", mqtt_password, 50);
-  
+  WiFiManagerParameter custom_mqtt_secure("secure", "MQTT Secure", "0", 2); 
+
   Serial.println("\n Starting");
 
   
@@ -277,7 +295,8 @@ void setup() {
   wm.addParameter(&custom_mqtt_port);
   wm.addParameter(&custom_mqtt_user);
   wm.addParameter(&custom_mqtt_password);
-  
+  wm.addParameter(&custom_mqtt_secure); 
+
   wm.setSaveConfigCallback(saveConfigCallback);
 
   bool res;
@@ -292,7 +311,7 @@ void setup() {
   else {
     //if you get here you have connected to the WiFi    
     Serial.println("connected...yeey :)");
-    //TODO: Green LED on
+    //TODO: Green LED on 
   
     //save the custom parameters to FS
     if (shouldSaveConfig) {
@@ -302,7 +321,7 @@ void setup() {
       strcpy(mqtt_port, custom_mqtt_port.getValue());
       strcpy(mqtt_user, custom_mqtt_user.getValue());
       strcpy(mqtt_password, custom_mqtt_password.getValue());
-    
+      mqtt_secure = atoi(custom_mqtt_secure.getValue());
 
       DynamicJsonBuffer jsonBuffer;
 
@@ -311,6 +330,7 @@ void setup() {
       json["mqtt_server"] = custom_mqtt_server.getValue();
       json["mqtt_user"] = mqtt_user;
       json["mqtt_password"] = mqtt_password;
+      json["mqtt_secure"] = mqtt_secure;
   
       File configFile = SPIFFS.open("/config.json", "w");
       if (!configFile) {
@@ -329,12 +349,33 @@ void setup() {
     //Bad Donkey!!  Change this to read any SSL by including certs.h and NTP etc  BearSSL
     //TODO:This is a huge job, and is there much point, it only allows for a MITM attack which is 
     //as rare as unicorn poop,  maybe one day.
-    wifiClient.setInsecure();
-    //wifiClient.setFingerprint(fingerprint);
+    if (mqtt_secure) {
+      Serial.println("Secure mqtt client");
+      client = new WiFiClientSecure();
+      //wifiClient.setInsecure();
+      //wifiClient.setFingerprint(fingerprint);
+    } else {
+      Serial.println("Insecure mqtt client");
+      client = new WiFiClient();
+    }
+
+
+    mqttclient.setClient(*client);
     mqttclient.setServer(mqtt_server, atoi(mqtt_port));
     mqttclient.setCallback(callback);
+
+    
+    Serial.println("Starting Wire");
+    Wire.begin(PIN_SDA, PIN_SCL);
   }
+
+  
+  currentMillis = millis();
+  lastAliveMessage = currentMillis;
+
+
 }
+
 
 void checkButton(){
   // check for button press
@@ -366,11 +407,37 @@ void saveConfigCallback () {
   shouldSaveConfig = true;
 }
 
+
 void loop() {
+
+  currentMillis = millis();
+
   checkButton();
+  if (WiFi.status() != WL_CONNECTED) {
+    Serial.println("Wi-Fi disconnected!");
+    WiFi.reconnect();
+  }
+
   // put your main code here, to run repeatedly:
   if (!mqttclient.connected()) {
+    Serial.println("reconnecting mqtt");
     reconnect();
+  }
+  else{
+
+    // Publish "alive" message at the specified interval
+    if ((currentMillis - lastAliveMessage) >= aliveInterval) {
+      lastAliveMessage = currentMillis;
+      mqttclient.publish(mqtt_topic_alive, "alive", true); // Publish with retain flag
+      aliveMessagePublished = true; // Set the flag
+      lastClearMessage = currentMillis; // Reset the clear message timer
+    }
+
+    // Clear the retained message after the specified interval if the "alive" message was published
+    if (aliveMessagePublished && (currentMillis - lastClearMessage) >= messageExpireInterval) {
+      mqttclient.publish(mqtt_topic_alive, "", true); // Publish empty message to clear retained message
+      aliveMessagePublished = false; // Reset the flag
+    }
   }
  
   mqttclient.loop();
