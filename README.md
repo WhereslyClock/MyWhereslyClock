@@ -19,6 +19,14 @@ If you feel you could contribute to the project, let me know, I have no idea how
 
 ## Careful now
 ![Fr.Ted - CarefulNow](markup/careful.jpg)  
+So some folk have criticised me for going overboard on the safety notices and said this is low voltage, safe etc.
+Im not an electrician so I cannot confirm this.  We also live in a world where we have to label hot coffee as hot,
+pistacio icecreams as containing nuts, mostly because of a bunch of stupid people or parasitic ambulance chasers
+blaming others for peoples stupidity for financial gain at the expense of the innocent.
+
+So I stand by what I say below, I don't acknowledge the criticisms or accept anyone elses confirmation on how safe their *opinion* of this is.
+
+
 > ***Warning:*** This is an experimental project using electronic components that may or may not be CE rated,
 > and is not by any means production ready.  I take no responsibility for any
 > problems, fires, explosions, poltergeists or curses.  If you are not qualified or experienced
